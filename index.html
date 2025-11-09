@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Good Morning, Sister ☀️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#fde1ff; /* soft pink */
+      --bg2:#d6f2ff; /* baby blue */
+      --bg3:#fff8e1; /* sunshine */
+      --ink:#2b2b2b;
+      --accent:#ff69b4; /* hot pink */
+      --accent2:#6a5acd; /* slate blue */
+      --glow: 0 10px 40px rgba(255, 105, 180, .35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink); font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: radial-gradient(1200px 600px at 80% -10%, var(--bg3), transparent 60%),
+                  radial-gradient(1000px 800px at 20% 0%, var(--bg2), transparent 55%),
+                  linear-gradient(135deg, var(--bg1), #ffffff);
+      overflow-x:hidden;
+    }
+    /* Decorative sunrise */
+    .sky{position:fixed; inset:0; overflow:hidden; pointer-events:none}
+    .sun{position:absolute; left:50%; bottom:-120px; width:280px; height:280px; transform:translateX(-50%);
+      background:radial-gradient(circle at 50% 50%, #ffd36b 0%, #ffb347 60%, rgba(255,179,71,0) 62%);
+      filter:blur(1px); border-radius:50%; animation:sunrise 8s ease-in-out forwards}
+    @keyframes sunrise{0%{bottom:-160px; opacity:.6} 100%{bottom:35vh; opacity:1}}
+
+    /* Floating petals */
+    .petal{position:fixed; top:-10vh; width:18px; height:14px; background:var(--accent);
+      border-radius:70% 30% 70% 30%/60% 40% 60% 40%; opacity:.6; filter:blur(.2px)}
+    @keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+
+    /* Card */
+    .wrap{min-height:100%; display:grid; place-items:center; padding:48px 20px}
+    .card{
+      width:min(960px, 92vw);
+      background:rgba(255,255,255,.8);
+      backdrop-filter: blur(8px);
+      border-radius:28px; box-shadow:0 20px 60px rgba(0,0,0,.08);
+      overflow:hidden; position:relative; border:1px solid rgba(0,0,0,.06);
+    }
+    .ribbon{position:absolute; inset:auto 0 0 0; height:8px; background:linear-gradient(90deg, var(--accent), #ffa3d4, var(--accent2))}
+    header{
+      padding:28px 28px 8px;
+      display:flex; align-items:center; gap:16px; justify-content:space-between;
+    }
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{width:44px; height:44px; border-radius:50%; background:conic-gradient(from 90deg, var(--accent), var(--accent2), var(--accent)); box-shadow:var(--glow)}
+    .brand h1{margin:0; font-weight:800; letter-spacing:.3px}
+    .brand small{display:block; margin-top:2px; opacity:.7}
+
+    .controls{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      appearance:none; border:0; border-radius:14px; padding:10px 14px; cursor:pointer;
+      background:#111; color:#fff; font-weight:600; letter-spacing:.2px; box-shadow:0 8px 24px rgba(17,17,17,.18);
+      transition:transform .18s ease, box-shadow .18s ease; user-select:none
+    }
+    .btn.secondary{background:#fff; color:#111; border:1px solid rgba(0,0,0,.1)}
+    .btn:hover{transform:translateY(-2px)}
+
+    .hero{padding:18px 28px 0}
+    .tag{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.8px; color:#6b7280; text-transform:uppercase}
+    .title{font-size:clamp(32px, 5vw, 64px); line-height:1.05; margin:8px 0 10px; font-weight:800}
+    .hand{display:inline-block; transform-origin:70% 70%; animation:wave 2.2s infinite ease-in-out}
+    @keyframes wave{0%{transform:rotate(0)} 15%{transform:rotate(18deg)} 30%{transform:rotate(-6deg)} 45%{transform:rotate(12deg)} 60%{transform:rotate(0)} 100%{transform:rotate(0)}}
+    .subtitle{font-size:clamp(16px, 2.2vw, 20px); opacity:.85; max-width:70ch}
+
+    .poem{
+      margin:22px 0; padding:20px; border-radius:18px; background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.7));
+      border:1px dashed rgba(0,0,0,.08);
+      box-shadow:0 6px 18px rgba(0,0,0,.05);
+      font-size:18px; line-height:1.7
+    }
+    .poem em{font-family:"Great Vibes", cursive; font-size:28px; letter-spacing:.4px}
+    .poem p{margin:.4em 0}
+
+    .grid{display:grid; gap:16px; grid-template-columns:repeat(12,1fr); padding:24px 28px 36px}
+    .panel{
+      grid-column: span 12;
+      background: #ffffff;
+      border:1px solid rgba(0,0,0,.06); border-radius:18px; padding:18px 18px 20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.06)
+    }
+    .panel h3{margin:0 0 6px; font-size:18px; opacity:.8}
+    .panel p{margin:0; opacity:.9}
+    .list{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    .chip{padding:10px 12px; border-radius:999px; border:1px solid rgba(0,0,0,.08); background:rgba(255,255,255,.8); font-weight:600}
+
+    @media(min-width:780px){
+      .panel.span-5{grid-column: span 5}
+      .panel.span-7{grid-column: span 7}
+    }
+
+    footer{padding:18px 28px 28px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
+    .sig{font-family:"Great Vibes", cursive; font-size:28px}
+    .ts{font-size:14px; opacity:1}
+    /* Fancy local time badge */
+    .time-wrap{display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:linear-gradient(90deg,#ffe1f7,#e1f3ff,#fff3c4); border:1px solid rgba(0,0,0,.06); box-shadow:0 6px 20px rgba(255,105,180,.25)}
+    #clock{font-variant-numeric:tabular-nums; font-weight:800; letter-spacing:1px; background:linear-gradient(90deg,#ff6ec7,#ffa000,#7f7fff,#39d98a,#ff6ec7); background-size:300% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:timeShift 7s linear infinite, timeGlow 1.2s ease-in-out infinite alternate}
+    @keyframes timeShift{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+    @keyframes timeGlow{0%{text-shadow:0 0 0 rgba(255,105,180,0)}100%{text-shadow:0 0 12px rgba(106,90,205,.55)}}
+    @media (max-width:480px){#clock{letter-spacing:.6px; font-size:16px}}
+
+    /* Typewriter */
+    .type{border-right:2px solid #000; white-space:nowrap; overflow:hidden}
+
+    /* confetti */
+    .confetti{position:fixed; inset:0; pointer-events:none; overflow:hidden}
+    .confetti span{position:absolute; width:8px; height:14px; background:#000; opacity:.85; top:-10px; animation:conf 3.4s linear forwards}
+    @keyframes conf { 100% { transform: translateY(105vh) rotate(720deg); } }
+    /* --- Custom headline + color upgrades + mobile tweaks --- */
+    .title{letter-spacing:.6px}
+    .gradientText{background:linear-gradient(90deg,#ff6ec7, #ffa000, #7f7fff, #ff6ec7);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 8px rgba(255,105,180,.35));text-transform:uppercase;animation:shift 8s linear infinite}
+    .afterline{font-weight:600; text-transform:none; opacity:.9}
+    @keyframes shift{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+    .blink{animation:blinkGlow 1.15s ease-in-out infinite alternate}
+    @keyframes blinkGlow{0%{filter:drop-shadow(0 0 0 rgba(255,105,180,.0))}100%{filter:drop-shadow(0 0 12px rgba(255,105,180,.55))}}
+
+    /* Colorful text sections */
+    .subtitle{color:#3a3a3a; background:rgba(255,255,255,.85); border:1px solid rgba(0,0,0,.06); padding:10px 14px; border-radius:12px; display:inline-block}
+    .poem{background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,240,250,.85)); border:1px dashed rgba(255,105,180,.35)}
+    .panel{background:linear-gradient(180deg,#ffffff, #fff8fb)}
+    .chip{background:linear-gradient(180deg, #ffffff, #fff0fb); border-color:rgba(255,105,180,.25)}
+    .tag{color:#6a5acd}
+
+    /* Mobile/Android friendly media query */
+    @media (max-width: 480px){
+      header{padding:20px 16px 6px}
+      .hero{padding:14px 16px 0}
+      .grid{grid-template-columns:1fr; padding:16px}
+      .title{font-size:clamp(28px, 8vw, 44px)}
+      .subtitle{font-size:14px}
+      .poem{font-size:16px}
+      .btn{padding:9px 12px; border-radius:12px}
+      .logo{width:38px;height:38px}
+      .sun{width:200px;height:200px;bottom:10vh}
+    }
+      /* Touch-friendly hit area for buttons */
+    .btn{min-height:40px}
+    .btn#musicToggle.is-muted{opacity:.85; background:#fff; color:#111; border:1px solid rgba(0,0,0,.12)}
+
+    /* Larger screens (laptops/desktops) */
+    @media (min-width: 1024px){
+      .title{font-size:clamp(40px, 4.6vw, 72px)}
+      .hero{padding:24px 40px 0}
+      header{padding:32px 40px 10px}
+      .grid{padding:28px 40px 40px}
+    }
+
+    /* Touch devices (Android/iOS) */
+    @media (hover: none) and (pointer: coarse){
+      .btn{padding:12px 16px}
+      .chip{padding:12px 14px}
+      .type{border-right-width:3px}
+    }
+
+    /* Landscape phones */
+    @media (max-height: 520px) and (orientation: landscape){
+      .sun{bottom:0}
+      .wrap{padding:20px 10px}
+      .card{border-radius:18px}
+      .hero{padding:10px 16px 0}
+    }
+  </style>
+</head>
+<body>
+  <!-- Decorative sky and sun -->
+  <div class="sky" aria-hidden="true">
+    <div class="sun"></div>
+  </div>
+
+  <!-- Falling petals (added by JS) -->
+
+  <main class="wrap">
+    <section class="card">
+      <div class="ribbon"></div>
+      <header>
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>Good Morning, <span id="sisName">Sister</span> ✨</h1>
+            <small>Rise & shine — today is <span id="today"></span></small>
+          </div>
+        </div>
+        <div class="controls">
+          <button class="btn" id="celebrate">Celebrate</button>
+          <button class="btn secondary" id="rename">Set Name</button>
+          <button class="btn secondary" id="musicToggle">🔊 Music</button>
+          <button class="btn secondary" id="share">Share</button>
+        </div>
+      </header>
+
+      <div class="hero">
+        <span class="tag">a special wish</span>
+        <h2 class="title">
+          <span class="hand">👋</span>
+          <span class="gradientText blink">Good Morning, <span id="nameBig">Sister</span></span><br/>
+          <span class="afterline">— You Make the World Softer & Brighter.</span>
+        </h2>
+        <p class="subtitle type" id="typeLine" aria-live="polite"></p>
+
+        <div class="poem">
+          <p><em>Subah ki Roshni</em> tumhari muskan se pyaari lage,</p>
+          <p>Har sapna aaj haqeeqat ki taraf ek kadam badhe.</p>
+          <p>Khud par vishwas rakho — tum kamaal ho! 🌼</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="panel span-7">
+          <h3>Little morning checklist</h3>
+          <div class="list">
+            <span class="chip">💧 Drink water</span>
+            <span class="chip">🧘‍♀️ 5-min stretch</span>
+            <span class="chip">📖 1 page of learning</span>
+            <span class="chip">🙏 Gratitude x3</span>
+            <span class="chip">📵 10-min no phone</span>
+          </div>
+          <p style="margin-top:10px">Tiny steps → big magic. I'm cheering for you, always.</p>
+        </article>
+        <article class="panel span-5">
+          <h3>Today's affirmation</h3>
+          <p id="affirm">I radiate kindness, courage, and calm — and good things find me.</p>
+        </article>
+      </div>
+
+      <footer>
+        <div class="sig">MADE BY — <span id="from">TUGGU </span></div>
+        <div class="ts">Local time: <span class="time-wrap">⏰ <span id="clock"></span></span></div>
+      </footer>
+    </section>
+  </main>
+
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <audio id="bgm" preload="auto" playsinline loop>
+    <source src="ass.mp3" type="audio/mpeg">
+    <source src="ass.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Utility: format today
+    const todayEl = document.getElementById('today');
+    const clockEl = document.getElementById('clock');
+    const nameSpots = [document.getElementById('sisName'), document.getElementById('nameBig')];
+    const typeEl = document.getElementById('typeLine');
+    const affirmEl = document.getElementById('affirm');
+    const confetti = document.getElementById('confetti');
+
+    const lines = [
+      'New day, new sparkle — let\'s bloom! 🌸',
+      'Your smile is my favorite sunlight. ☀️',
+      'You\'re strong, smart, and wonderfully you. 💪',
+      'Aaj ka din tumhare naam! 🏆'
+    ];
+
+    const affirmations = [
+      'I am brave, gentle, and unstoppable.',
+      'I choose peace and progress over perfection.',
+      'My heart is open to sweet surprises.',
+      'Main khud par vishwas karti hoon — aur kaafi hoon.'
+    ];
+
+    function updateDate(){
+      const now = new Date();
+      todayEl.textContent = now.toLocaleDateString(undefined, {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+      clockEl.textContent = now.toLocaleTimeString();
+    }
+    updateDate(); setInterval(updateDate, 1000);
+
+    // Typewriter
+    let idx = 0, subIdx = 0, current = lines[0], deleting = false;
+    function type(){
+      if(!deleting){
+        subIdx++;
+        typeEl.textContent = current.substring(0, subIdx);
+        if(subIdx === current.length){
+          deleting = true; setTimeout(type, 1600); return;
+        }
+      }else{
+        subIdx--; typeEl.textContent = current.substring(0, subIdx);
+        if(subIdx === 0){
+          deleting = false; idx = (idx+1)%lines.length; current = lines[idx];
+        }
+      }
+      setTimeout(type, deleting? 30: 55);
+    }
+    type();
+
+    // Petals
+    function makePetal(){
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.style.left = Math.random()*100 + 'vw';
+      p.style.background = Math.random()>.5? 'var(--accent)':'var(--accent2)';
+      const d = 7 + Math.random()*7;
+      p.style.animation = `fall ${5 + Math.random()*6}s linear ${Math.random()*2}s infinite`;
+      p.style.transform = `rotate(${Math.random()*360}deg)`;
+      document.body.appendChild(p);
+      setTimeout(()=>p.remove(), 14000);
+    }
+    for(let i=0;i<24;i++) setTimeout(makePetal, i*220);
+    setInterval(makePetal, 1200);
+
+    // Confetti burst
+    function confettiBurst(){
+      const n = 120;
+      for(let i=0;i<n;i++){
+        const s = document.createElement('span');
+        s.style.left = Math.random()*100 + 'vw';
+        s.style.background = `hsl(${Math.random()*360}, 90%, 55%)`;
+        s.style.animationDelay = (Math.random()*0.6)+'s';
+        s.style.transform = `translateY(-4vh) rotate(${Math.random()*180}deg)`;
+        confetti.appendChild(s);
+        setTimeout(()=>s.remove(), 3600);
+      }
+    }
+
+    // Buttons
+    const audio = document.getElementById('bgm');
+    const musicBtn = document.getElementById('musicToggle');
+
+    async function safePlay(){
+      try{
+        await audio.play();
+        musicBtn.classList.remove('is-muted');
+        musicBtn.textContent = '🔊 Music';
+      }catch(err){
+        // Autoplay blocked; set button to muted state
+        musicBtn.classList.add('is-muted');
+        musicBtn.textContent = '🔈 Tap to Play';
+      }
+    }
+
+    // Try to start quietly after first gesture anywhere
+    const unlock = async ()=>{
+      await safePlay();
+      window.removeEventListener('click', unlock);
+      window.removeEventListener('touchstart', unlock);
+      window.removeEventListener('keydown', unlock);
+    };
+    window.addEventListener('click', unlock, {once:false});
+    window.addEventListener('touchstart', unlock, {once:false, passive:true});
+    window.addEventListener('keydown', unlock, {once:false});
+
+    document.getElementById('celebrate').addEventListener('click', async ()=>{
+      confettiBurst();
+      try{ audio.currentTime=0; await audio.play(); }catch(e){}
+      affirmEl.textContent = affirmations[Math.floor(Math.random()*affirmations.length)];
+    });
+
+    musicBtn.addEventListener('click', async ()=>{
+      if(audio.paused){ await safePlay(); } else { audio.pause(); musicBtn.classList.add('is-muted'); musicBtn.textContent='🔈 Tap to Play'; }
+    });
+
+    document.getElementById('rename').addEventListener('click', ()=>{
+      const name = prompt('Enter your sister\'s name:', nameSpots[0].textContent.trim());
+      if(name){ nameSpots.forEach(n=>n.textContent=name); }
+    });
+
+    document.getElementById('share').addEventListener('click', async ()=>{
+      const text = `Good Morning, ${nameSpots[0].textContent}!
+May your day be soft, bright, and full of wins. ✨`;
+      if(navigator.share){
+        try{ await navigator.share({title:'Good Morning 🌞', text}); }catch(e){}
+      }else{
+        navigator.clipboard.writeText(text);
+        alert('Copied a sweet wish to your clipboard — paste anywhere!');
+      }
+    });
+
+    // Personalize signature from URL (?from=Your%20Name)
+    const params = new URLSearchParams(location.search);
+    if(params.has('from')){
+      document.getElementById('from').textContent = decodeURIComponent(params.get('from'));
+    }
+
+  </script>
+</body>
+</html>
